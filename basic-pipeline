@@ -2,25 +2,20 @@ pipeline
 {
   stages
     {
-      stage
-        {
-          step
-            {
+      stage('One') {
+          steps {
               echo "This is a basic pipeline test---stage1---step1"
             }
-          step
-            {
+          steps {
               echo "This is a basic pipeline test----stage1--step2"
             }
         }
-      stage
+      stage('Two') {
         {
-          step
-            {
+          steps {
               echo "This is a basic pipeline test---stage2---step1"
             }
-          step
-            {
+          steps {
               echo "This is a basic pipeline test----stage2--step2"
             }
         }
