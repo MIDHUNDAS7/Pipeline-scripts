@@ -1,22 +1,37 @@
 pipeline
 {
+agent any
   stages
     {
       stage('One') {
           steps {
               echo "This is a basic pipeline test---stage1---step1"
-            }
-          steps {
-              echo "This is a basic pipeline test----stage1--step2"
+              echo "This is a basic pipeline test---stage1---step2"
             }
         }
       stage('Two') {
           steps {
+              sh '''
               echo "This is a basic pipeline test---stage2---step1"
-            }
-          steps {
               echo "This is a basic pipeline test----stage2--step2"
+              df -h
+              '''
             }
         }
     }
+      post {
+          always {
+              echo "COMPLETED"
+          }
+          success {
+              echo "SUCCESS"
+          }
+          failure {
+              echo "FAILED"
+          }
+          changed {
+              echo "CHANGED"
+          }
+
+      }
 }       
